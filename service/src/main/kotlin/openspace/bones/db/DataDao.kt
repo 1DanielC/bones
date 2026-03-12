@@ -14,6 +14,12 @@ data class DataDao(private val dsl: DSLContext) {
             BOBS_TABLE.TEXT_FIELD,
         )
 
+    fun selectAll() =
+        dsl
+            .select(domainSelect)
+            .from(BOBS_TABLE)
+            .fetchInto(Data::class.java)
+
     fun selectById(id: UUID): Data? =
         dsl
             .select(domainSelect)
