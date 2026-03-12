@@ -1,0 +1,19 @@
+server:
+  port: 26637
+
+# Database configuration
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bones
+    username: bones
+    password: bones
+    driver-class-name: org.postgresql.Driver
+
+  # Flyway configuration
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  # JOOQ configuration
+  jooq:
+    sql-dialect: postgres

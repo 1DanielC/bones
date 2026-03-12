@@ -1,14 +1,21 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Constitution Of Bones 🦴🦴🦴
+
+Bones is an barebones microservice providing a foundation for builders to create APIs without having to worry 
+about nitty-gritty details
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### 1 API
+#### 1.a API namespaces
+all APIs are prefixed with `/api`
 
-### [PRINCIPLE_2_NAME]
+### 2 DB
+#### 2.a DB
+All Daos are written using JOOQ
+
+### 3 Logging
+#### 3.a Logging
+
 <!-- Example: II. CLI Interface -->
 [PRINCIPLE_2_DESCRIPTION]
 <!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
