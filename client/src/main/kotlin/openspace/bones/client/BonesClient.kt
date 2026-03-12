@@ -9,13 +9,14 @@ import java.util.UUID
 class BonesClient(
     private val baseUrl: String,
     private val restClient: RestClient = RestClient.create(),
-    private val objectMapper: ObjectMapper = jacksonObjectMapper()
+    private val objectMapper: ObjectMapper = jacksonObjectMapper(),
 ) {
     fun hello(): Map<String, String> {
-        val response = restClient.get()
-            .uri("$baseUrl/hello")
-            .retrieve()
-            .body(String::class.java)
+        val response =
+            restClient.get()
+                .uri("$baseUrl/hello")
+                .retrieve()
+                .body(String::class.java)
 
         @Suppress("UNCHECKED_CAST")
         return objectMapper.readValue(response, Map::class.java) as Map<String, String>

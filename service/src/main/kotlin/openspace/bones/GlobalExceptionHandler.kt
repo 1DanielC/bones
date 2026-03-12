@@ -10,35 +10,37 @@ import org.springframework.web.servlet.resource.NoResourceFoundException
 
 @RestControllerAdvice
 class GlobalExceptionHandler {
-
     @ExceptionHandler(ResponseStatusException::class)
     fun handleResponseStatusException(ex: ResponseStatusException): ResponseEntity<ErrorResponse> {
         val status = HttpStatus.valueOf(ex.statusCode.value())
-        val response = ErrorResponse(
-            status = status.value(),
-            error = status.reasonPhrase,
-            message = ex.reason ?: "An error occurred"
-        )
+        val response =
+            ErrorResponse(
+                status = status.value(),
+                error = status.reasonPhrase,
+                message = ex.reason ?: "An error occurred",
+            )
         return ResponseEntity.status(status).body(response)
     }
 
     @ExceptionHandler(NoResourceFoundException::class)
     fun handleNoResourceFound(ex: NoResourceFoundException): ResponseEntity<ErrorResponse> {
-        val response = ErrorResponse(
-            status = HttpStatus.NOT_FOUND.value(),
-            error = HttpStatus.NOT_FOUND.reasonPhrase,
-            message = "Resource not found"
-        )
+        val response =
+            ErrorResponse(
+                status = HttpStatus.NOT_FOUND.value(),
+                error = HttpStatus.NOT_FOUND.reasonPhrase,
+                message = "Resource not found",
+            )
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response)
     }
 
     @ExceptionHandler(Exception::class)
     fun handleGenericException(ex: Exception): ResponseEntity<ErrorResponse> {
-        val response = ErrorResponse(
-            status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
-            error = HttpStatus.INTERNAL_SERVER_ERROR.reasonPhrase,
-            message = "An unexpected error occurred"
-        )
+        val response =
+            ErrorResponse(
+                status = HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                error = HttpStatus.INTERNAL_SERVER_ERROR.reasonPhrase,
+                message = "An unexpected error occurred",
+            )
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response)
     }
 }

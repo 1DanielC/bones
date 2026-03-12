@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm")
     kotlin("plugin.spring")
@@ -42,17 +40,17 @@ jooq {
                         properties.add(
                             org.jooq.meta.jaxb.Property()
                                 .withKey("scripts")
-                                .withValue("src/main/resources/db/migration/*.sql")
+                                .withValue("src/main/resources/db/migration/*.sql"),
                         )
                         properties.add(
                             org.jooq.meta.jaxb.Property()
                                 .withKey("sort")
-                                .withValue("flyway")
+                                .withValue("flyway"),
                         )
                         properties.add(
                             org.jooq.meta.jaxb.Property()
                                 .withKey("defaultNameCase")
-                                .withValue("lower")
+                                .withValue("lower"),
                         )
                     }
                     generate.apply {

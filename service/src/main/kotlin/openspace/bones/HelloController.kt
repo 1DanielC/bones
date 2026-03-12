@@ -2,7 +2,6 @@ package openspace.bones
 
 import openspace.bones.db.DataDao
 import openspace.bones.objects.api.DataModel
-import openspace.bones.objects.domain.Data
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -12,7 +11,6 @@ import java.util.UUID
 
 @RestController
 class HelloController(private val dao: DataDao) {
-
     @GetMapping("/")
     fun root(): Nothing {
         throw ResponseStatusException(HttpStatus.NOT_FOUND)
@@ -24,7 +22,9 @@ class HelloController(private val dao: DataDao) {
     }
 
     @GetMapping("/bob/{id}")
-    fun bob(@PathVariable id: UUID): DataModel {
+    fun bob(
+        @PathVariable id: UUID,
+    ): DataModel {
         val obj = dao.selectById(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         return obj.toModel()
     }
